@@ -1,8 +1,8 @@
 import { Button } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu'
+import MenuIcon from '@material-ui/icons/Menu';
 import React from 'react';
 import styles from './Header.module.scss';
-import Nav from '../Nav/Nav.tsx';
+import Nav from '../Nav/Nav';
 
 const Header = () => (
   <header className={styles.Header}>
