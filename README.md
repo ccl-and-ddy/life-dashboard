@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# [Life Analytics](https://ccl-and-ddy.github.io/life-dashboard/)
+
+A personalized dashboard to organize and analyze your life.
+
+Copyright &copy; [Cecile Zhang](http://cecilezhang.com) and [Duncan Cai](https://github.com/ddycai). All rights reserved.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
