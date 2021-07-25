@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import styles from './Header.module.scss';
+import Nav from '../Nav/Nav.tsx';
 
 const Header = () => (
   <header className={styles.Header}>
@@ -11,6 +12,7 @@ const Header = () => (
       <img src="" alt=""></img>
     </a>
 
+    <Nav />
     <button mat-button>
       log-in/sign-up
     </button>
