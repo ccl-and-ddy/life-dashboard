@@ -2,9 +2,11 @@ import { List } from '@material-ui/core';
 import { Button, Dialog, DialogTitle, ListItem, ListItemText } from '@material-ui/core';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDashboard, RootState } from '../store';
-import { Dashboard } from '../UserData';
+import { addDashboard, RootState } from '../../store';
+import { Dashboard } from '../../UserData';
 import styles from './Home.module.scss';
+import AmountDashboard from '../../dashboard-types/AmountDashboard/AmountDashboard';
+import DailyDashboard from '../../dashboard-types/DailyDashboard/DailyDashboard';
 
 const Home = () => {
   const dashboards = useSelector((state: RootState) => state.userData.dashboards);
@@ -42,6 +44,9 @@ const Home = () => {
         </ListItem>
       </List>
     </Dialog>
+
+    <AmountDashboard />
+    <DailyDashboard />
   </div>);
 };
 
