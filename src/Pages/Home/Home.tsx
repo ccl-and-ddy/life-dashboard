@@ -2,6 +2,8 @@ import { List } from '@material-ui/core';
 import { Button, Dialog, DialogTitle, ListItem, ListItemText } from '@material-ui/core';
 import React, { useState } from 'react';
 import styles from './Home.module.scss';
+import AmountDashboard from '../../dashboard-types/AmountDashboard/AmountDashboard';
+import DailyDashboard from '../../dashboard-types/DailyDashboard/DailyDashboard';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -28,6 +30,9 @@ const Home = () => {
         </ListItem>
       </List>
     </Dialog>
+
+    <AmountDashboard />
+    <DailyDashboard />
   </div>);
 };
 
