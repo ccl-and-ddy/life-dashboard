@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Header></Header>
       <Switch>
-        <Route path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/" component={Home} />
       </Switch>
     </div>
   );
