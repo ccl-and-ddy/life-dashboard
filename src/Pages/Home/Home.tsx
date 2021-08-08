@@ -1,6 +1,7 @@
 import { List } from '@material-ui/core';
 import { Button, Dialog, DialogTitle, ListItem, ListItemText } from '@material-ui/core';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDashboard, RootState } from '../../store';
 import { Dashboard } from '../../UserData';
@@ -25,7 +26,13 @@ const Home = () => {
     setOpen(false);
   }
 
-  const dashboardEls = dashboards.map(dashboard => <li>{dashboard.name}</li>)
+  const dashboardEls = dashboards.map(dashboard => 
+    <li>
+      <Link to={`/dashboard/${dashboard.id}`}>
+        {dashboard.name}
+      </Link>
+    </li>
+  )
 
   return (<div className={styles.Home}>
     <h1>My Dashboards</h1>
@@ -44,9 +51,6 @@ const Home = () => {
         </ListItem>
       </List>
     </Dialog>
-
-    <AmountDashboard />
-    <DailyDashboard />
   </div>);
 };
 
