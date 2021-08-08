@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
 
 const Nav = () => (
   <nav className={styles.Nav}>
     <ul>
       <li>
-        <Link to="/">home </Link>
+        <NavLink to="/">home </NavLink>
       </li>
       <li>
-        <Link to="/about">about</Link>
+        <NavLink to="/about">about</NavLink>
       </li>
       <li>
         <a href="/run">run</a>
