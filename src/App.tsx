@@ -3,8 +3,6 @@ import Header from './Header/Header';
 import Home from './Pages/Home/Home';
 import About from './Pages/About/About';
 import DashboardPage from './Pages/Dashboard/DashboardPage';
-import AmountDashboard from './dashboard-types/AmountDashboard/AmountDashboard';
-import DailyDashboard from './dashboard-types/DailyDashboard/DailyDashboard';
 import './App.scss';
 
 function App() {

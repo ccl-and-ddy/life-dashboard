@@ -1,21 +1,14 @@
-import React from 'react';
 import styles from './DashboardPage.module.scss';
 import AmountDashboard from '../../dashboard-types/AmountDashboard/AmountDashboard';
 import DailyDashboard from '../../dashboard-types/DailyDashboard/DailyDashboard';
 import { useParams } from 'react-router-dom';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { addDashboard, RootState } from '../../store';
-import { Dashboard } from '../../UserData';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
 
 
 const DashboardPage = () => {
+  const { id } = useParams<{ id:string }>();
   const dashboards = useSelector((state: RootState) => state.userData.dashboards);
-
-  // read dashboard id first = 0
-  let { id } = useParams<{ id:string }>();
-
-  // extract the right dashboard
   const currentDashboard = dashboards.find(dashboard => dashboard.id === id);
   
   if (!currentDashboard) {
