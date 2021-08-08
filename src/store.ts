@@ -35,10 +35,39 @@ const userDataSlice = createSlice({
       const userDataString = JSON.stringify(state);
       localStorage.setItem('userData', userDataString);
     },
+    editDashboard: (state, action: PayloadAction<Dashboard>) => {
+      // Read user data again in case it has updated.
+      const userData = readUserData();
+      Object.assign(state, userData);
+
+      // Replace the existing dashboard.
+      state.dashboards = state.dashboards.map(dashboard => {
+        if (dashboard.id === action.payload.id) {
+          return action.payload;
+        }
+        return dashboard;
+      });
+
+      // Save the user data.
+      const userDataString = JSON.stringify(state);
+      localStorage.setItem('userData', userDataString);
+    },
+    removeDashboard: (state, action: PayloadAction<Dashboard>) => {
+      // Read user data again in case it has updated.
+      const userData = readUserData();
+      Object.assign(state, userData);
+
+      // Remove the matching dashboard.
+      state.dashboards = state.dashboards.filter(dashboard => dashboard.id !== action.payload.id);
+
+      // Save the user data.
+      const userDataString = JSON.stringify(state);
+      localStorage.setItem('userData', userDataString);
+    },
   }
 });
 
-export const { addDashboard } = userDataSlice.actions;
+export const { addDashboard, editDashboard, removeDashboard } = userDataSlice.actions;
 
 export const store = configureStore({
   reducer: {
