@@ -52,8 +52,8 @@ const Home = () => {
   const dashboardEls = dashboards.map((dashboard) => (
     <li>
       <Link to={`/dashboard/${dashboard.id}`}>
-        {dashboard.name}{" "}
-      </Link>
+        {dashboard.name}
+      </Link>{" "}
       <ButtonGroup color="primary" size="small" aria-label="Edit and remove dashboard button group">
         <Button onClick={() => openEditDashboardDialog(dashboard)}>Edit</Button>
         <Button onClick={() => handleRemoveDashboard(dashboard)}>Remove</Button>

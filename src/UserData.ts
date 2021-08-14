@@ -9,7 +9,7 @@ interface BaseDashboard {
   name: string; // e.g. "run log"
 }
 
-interface DailyDashboard extends BaseDashboard {
+export interface DailyDashboard extends BaseDashboard {
   days?: DailyDashboardDay[];
   kind: 'daily';
 }
@@ -23,7 +23,7 @@ interface DailyDashboardDay {
 
 type AmountInputMethod = 'time_range' | 'amount';
 
-interface AmountDashboard extends BaseDashboard {
+export interface AmountDashboard extends BaseDashboard {
   days?: AmountDashboardDay[];
   unit?: string; // e.g. km or hours
   inputMethod?: AmountInputMethod;

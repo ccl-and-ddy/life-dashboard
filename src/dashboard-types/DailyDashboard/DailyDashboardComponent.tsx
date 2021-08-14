@@ -1,10 +1,15 @@
 import React from 'react';
+import { DailyDashboard } from '../../UserData';
 import styles from './DailyDashboard.module.scss';
 
-const DailyDashboard = () => (
+interface Props {
+  data: DailyDashboard;
+}
+
+const DailyDashboardComponent = (props: Props) => (
   <div className={styles.DailyDashboard}>
     <div className="wrapper">
-      <h2>(user created title) + log</h2>
+      <h2>{props.data.name}</h2>
       <div className="dashboardNav">
         <button>back</button>
         <h3>this month</h3>
@@ -92,4 +97,4 @@ const DailyDashboard = () => (
   </div>
 );
 
-export default DailyDashboard;
+export default DailyDashboardComponent;

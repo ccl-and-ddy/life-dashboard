@@ -1,10 +1,15 @@
 import React from 'react';
 import styles from './AmountDashboard.module.scss';
+import { AmountDashboard } from '../../UserData';
 
-const AmountDashboard = () => (
+interface Props {
+  data: AmountDashboard;
+}
+
+const AmountDashboardComponent = (props: Props) => (
   <div className={styles.AmountDashboard}>
     <div className="wrapper">
-      <h2>(user created title) + log</h2>
+      <h2>{props.data.name}</h2>
       <div className="dashboardNav">
         <button>back</button>
         <h3>this week</h3>
@@ -36,4 +41,4 @@ const AmountDashboard = () => (
   </div>
 );
 
-export default AmountDashboard;
+export default AmountDashboardComponent;
