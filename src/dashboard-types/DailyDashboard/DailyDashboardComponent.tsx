@@ -7,7 +7,7 @@ interface Props {
 }
 
 const DailyDashboardComponent = (props: Props) => (
-  <div className={styles.DailyDashboard}>
+  <main className={styles.DailyDashboard}>
     <div className="wrapper">
       <h2>{props.data.name}</h2>
       <div className="dashboardNav">
@@ -94,7 +94,7 @@ const DailyDashboardComponent = (props: Props) => (
         </tr>
       </table>
     </div>
-  </div>
+  </main>
 );
 
 export default DailyDashboardComponent;

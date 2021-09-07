@@ -23,6 +23,9 @@ const Nav = () => {
         <li>
           <NavLink to="/about">about</NavLink>
         </li>
+        <li>
+          <NavLink to="/profile">profile</NavLink>
+        </li>
         {dashboards.length ? dashboardEls : null}
       </ul>
     </nav>

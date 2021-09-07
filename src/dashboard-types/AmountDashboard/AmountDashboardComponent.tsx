@@ -7,7 +7,7 @@ interface Props {
 }
 
 const AmountDashboardComponent = (props: Props) => (
-  <div className={styles.AmountDashboard}>
+  <main className={styles.AmountDashboard}>
     <div className="wrapper">
       <h2>{props.data.name}</h2>
       <div className="dashboardNav">
@@ -38,7 +38,7 @@ const AmountDashboardComponent = (props: Props) => (
         </tr>
       </table>
     </div>
-  </div>
+  </main>
 );
 
 export default AmountDashboardComponent;

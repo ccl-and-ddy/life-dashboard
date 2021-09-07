@@ -20,6 +20,15 @@ table {
   text-align: center;
 }
 
+img {
+  width: 100%;
+  object-fit: contain;
+  display:block;
+}
+
+
+
+
 // for dashboard type selector
 /* section {
   background: mistyrose;
