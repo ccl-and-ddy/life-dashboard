@@ -1,100 +1,65 @@
-import React from 'react';
-import { DailyDashboard } from '../../UserData';
-import styles from './DailyDashboard.module.scss';
+import React from "react";
+import { DailyDashboard } from "../../UserData";
+import styles from "./DailyDashboard.module.scss";
+import "react-calendar/dist/Calendar.css";
+import Calendar, { CalendarTileProperties, DateCallback } from "react-calendar";
+import { useDispatch } from "react-redux";
+import { editDashboard } from "../../store";
+import dayjs from 'dayjs';
 
-interface Props {
+interface DailyDashboardProps {
   data: DailyDashboard;
 }
 
-const DailyDashboardComponent = (props: Props) => (
-  <div className={styles.DailyDashboard}>
-    <div className="wrapper">
-      <h2>{props.data.name}</h2>
-      <div className="dashboardNav">
-        <button>back</button>
-        <h3>this month</h3>
-        <button>forward</button>
-        <button>calendar</button>
+const DailyDashboardComponent = ({data: dashboard}: DailyDashboardProps) => {
+  const dispatch = useDispatch();
+
+  const daysLogged: Set<string> = new Set();
+  dashboard.days?.forEach(({ date }) => {
+    daysLogged.add(date);
+  });
+
+  return (
+    <div className={styles.DailyDashboard}>
+      <div className="wrapper">
+        <h2>{dashboard.name}</h2>
+        <p>Click on a day to mark it completed. (Completed days are crossed out.)</p>
+        <Calendar
+          className={styles.calendarTile}
+          tileClassName={({ date }: CalendarTileProperties) =>
+            daysLogged.has(dayjs(date).format("YYYY-MM-DD")) ? styles.completedDay : null
+          }
+          onClickDay={(value) => {
+            const stringDate = dayjs(value).format("YYYY-MM-DD");
+            if (!daysLogged.has(stringDate)) {
+              const newDash: DailyDashboard = {
+                ...dashboard,
+                days: [...dashboard.days, {date: stringDate}]
+              };
+              dispatch(editDashboard(newDash));
+            } else {
+              const newDash: DailyDashboard = {
+                ...dashboard,
+                days: dashboard.days.filter(({date}) => date !== stringDate)
+              };
+              dispatch(editDashboard(newDash));
+            }
+          }}
+        />
+
+        <table>
+          <tr>
+            <td>total this month</td>
+            <td>21 hrs</td>
+          </tr>
+          <tr>
+            <td>increase since last month</td>
+            <td>+20%</td>
+          </tr>
+        </table>
       </div>
-
-      <table className="calendar">
-        <tr>
-          <th>sun</th>
-          <th>mon</th>
-          <th>tue</th>
-          <th>wed</th>
-          <th>thu</th>
-          <th>fri</th>
-          <th>sat</th>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>1</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>10</td>
-          <td>11</td>
-          <td>12</td>
-          <td>13</td>
-          <td>14</td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>16</td>
-          <td>17</td>
-          <td>18</td>
-          <td>19</td>
-          <td>20</td>
-          <td>21</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <td>23</td>
-          <td>24</td>
-          <td>25</td>
-          <td>26</td>
-          <td>27</td>
-          <td>28</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <td>30</td>
-          <td>31</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-
-      <table>
-        <tr>
-          <td>total this month</td>
-          <td>21 hrs</td>
-        </tr>
-        <tr>
-          <td>increase since last month</td>
-          <td>+20%</td>
-        </tr>
-      </table>
     </div>
-  </div>
-);
+  );
+};
 
 export default DailyDashboardComponent;

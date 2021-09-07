@@ -10,21 +10,18 @@ interface BaseDashboard {
 }
 
 export interface DailyDashboard extends BaseDashboard {
-  days?: DailyDashboardDay[];
+  days: DailyDashboardDay[];
   kind: 'daily';
 }
 
-type Mood = 'happy' | 'neutral' | 'sad';
-
 interface DailyDashboardDay {
-  date: Date;
-  mood: Mood;
+  date: string; // Format is YYYY-MM-DD
 }
 
 type AmountInputMethod = 'time_range' | 'amount';
 
 export interface AmountDashboard extends BaseDashboard {
-  days?: AmountDashboardDay[];
+  days: AmountDashboardDay[];
   unit?: string; // e.g. km or hours
   inputMethod?: AmountInputMethod;
   kind: 'amount';
@@ -33,6 +30,6 @@ export interface AmountDashboard extends BaseDashboard {
 export type Dashboard = DailyDashboard | AmountDashboard;
 
 interface AmountDashboardDay {
-  date: Date;
+  date: string; // Format is YYYY-MM-DD
   amount: number;
 }

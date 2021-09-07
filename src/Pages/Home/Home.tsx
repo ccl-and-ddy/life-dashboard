@@ -44,7 +44,7 @@ const Home = () => {
   }
 
   const newDashboard = (kind: Dashboard["kind"]) => {
-    dispatch(addDashboard({ name: dashboardNameInput, kind }));
+    dispatch(addDashboard({ name: dashboardNameInput, kind, days: []}));
     setDashboardNameInput('');
     setIsAddDialogOpen(false);
   }
