@@ -61,36 +61,37 @@ const Home = () => {
     </li>
   ));
 
-  return (<div className={styles.Home}>
-    <h1>My Dashboards</h1>
-    {dashboards.length ? <ul>{dashboardEls}</ul> : <p>No dashboards to show.</p>}
-    <Button variant="contained" color="primary" onClick={openAddDashboardDialog}>
-      Add a new dashboard
-    </Button>
+  return (
+    <main className={styles.Home}>
+      <h1>My Dashboards</h1>
+      {dashboards.length ? <ul>{dashboardEls}</ul> : <p>No dashboards to show.</p>}
+      <Button variant="contained" color="primary" onClick={openAddDashboardDialog}>
+        Add a new dashboard
+      </Button>
 
-    {/* Add Dashboard dialog */}
-    <Dialog open={isAddDialogOpen} onClose={() => setIsAddDialogOpen(false)}>
-      <DialogTitle>Add Dashboard</DialogTitle>
-      <TextField id="add-dashboard-name" label="Dashboard Name" onChange={handleNameInputChange} />
-      <List>
-        <ListSubheader>Dashboard Type</ListSubheader>
-        <ListItem button onClick={() => newDashboard('amount')}>
-          <ListItemText primary="Amount Dashboard" />
-        </ListItem>
-        <ListItem button onClick={() => newDashboard('daily')}>
-          <ListItemText primary="Daily Dashboard" />
-        </ListItem>
-      </List>
-    </Dialog>
+      {/* Add Dashboard dialog */}
+      <Dialog open={isAddDialogOpen} onClose={() => setIsAddDialogOpen(false)}>
+        <DialogTitle>Add Dashboard</DialogTitle>
+        <TextField id="add-dashboard-name" label="Dashboard Name" onChange={handleNameInputChange} />
+        <List>
+          <ListSubheader>Dashboard Type</ListSubheader>
+          <ListItem button onClick={() => newDashboard('amount')}>
+            <ListItemText primary="Amount Dashboard" />
+          </ListItem>
+          <ListItem button onClick={() => newDashboard('daily')}>
+            <ListItemText primary="Daily Dashboard" />
+          </ListItem>
+        </List>
+      </Dialog>
 
-    {/* Edit Dashboard dialog */}
-    <Dialog open={!!editingDashboard} onClose={() => setEditingDashboard(null)}>
-      <DialogTitle>Edit Dashboard</DialogTitle>
-      <TextField id="edit-dashboard-name" label="Dashboard Name" value={dashboardNameInput} onChange={handleNameInputChange} />
-      <Button onClick={submitDashboardEdit} disabled={!dashboardNameInput}>Submit</Button>
-    </Dialog>
+      {/* Edit Dashboard dialog */}
+      <Dialog open={!!editingDashboard} onClose={() => setEditingDashboard(null)}>
+        <DialogTitle>Edit Dashboard</DialogTitle>
+        <TextField id="edit-dashboard-name" label="Dashboard Name" value={dashboardNameInput} onChange={handleNameInputChange} />
+        <Button onClick={submitDashboardEdit} disabled={!dashboardNameInput}>Submit</Button>
+      </Dialog>
 
-  </div>);
+    </main>);
 };
 
 export default Home;

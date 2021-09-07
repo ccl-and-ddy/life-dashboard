@@ -20,7 +20,7 @@ const DailyDashboardComponent = ({data: dashboard}: DailyDashboardProps) => {
   });
 
   return (
-    <div className={styles.DailyDashboard}>
+    <main className={styles.DailyDashboard}>
       <div className="wrapper">
         <h2>{dashboard.name}</h2>
         <p>Click on a day to mark it completed. (Completed days are crossed out.)</p>
@@ -58,7 +58,7 @@ const DailyDashboardComponent = ({data: dashboard}: DailyDashboardProps) => {
           </tr>
         </table>
       </div>
-    </div>
+    </main>
   );
 };
 
