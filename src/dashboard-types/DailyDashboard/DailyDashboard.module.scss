@@ -1,1 +1,7 @@
 .DailyDashboard {}
+
+.completedDay {
+  opacity: 0.5;
+  text-decoration: line-through;
+  color: black;
+}
